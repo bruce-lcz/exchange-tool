@@ -30,7 +30,7 @@ pip install -r requirements.txt
 
 Query the current exchange rate:
 ```bash
-python exchange_rate_cli.py "CNY to TWD"
+python exchange_tool.py "CNY to TWD"
 ```
 
 ### Time Range Queries
@@ -40,16 +40,16 @@ You can specify a time range in two ways:
 1. Relative time range:
 ```bash
 # Last 1 month
-python exchange_rate_cli.py "CNY to TWD last 1 months"
+python exchange_tool.py "CNY to TWD last 1 months"
 
 # Last 1 year
-python exchange_rate_cli.py "CNY to TWD last 1 years"
+python exchange_tool.py "CNY to TWD last 1 years"
 ```
 
 2. Absolute date range:
 ```bash
 # Specific date range
-python exchange_rate_cli.py "CNY to TWD 2025-05-01~2025-05-30"
+python exchange_tool.py "CNY to TWD 2025-05-01~2025-05-30"
 ```
 
 ### Output Format
@@ -69,6 +69,6 @@ The tool provides the following information:
 ```
 .
 ├── README.md                 # Project documentation
-├── exchange_rate_cli.py      # Main script for exchange rate queries
+├── exchange_tool.py      # Main script for exchange rate queries
 └── requirements.txt          # Python package dependencies
 ```
