@@ -1,6 +1,67 @@
 # Exchange Rate Query Tool
 
-A command-line tool for querying exchange rates between Chinese Yuan (CNY) and New Taiwan Dollar (TWD) using Taiwan Bank's data.
+## 介紹
+
+本工具可查詢台灣銀行匯率歷史資料，支援 CLI 與 Python 程式呼叫。
+
+---
+
+## 安裝需求
+- requests
+- beautifulsoup4
+
+安裝：
+```
+pip install -r requirements.txt
+```
+
+---
+
+## CLI 用法
+
+```bash
+python exchange_tool.py "CNY to TWD last 3 months"
+python exchange_tool.py "USD to TWD 2024-01-01~2024-03-31"
+```
+
+查詢格式：
+- `CURRENCY1 to CURRENCY2 [last X months/years]`
+- `CURRENCY1 to CURRENCY2 YYYY-MM-DD~YYYY-MM-DD`
+
+---
+
+## 程式呼叫範例
+
+```python
+from exchange_tool import ExchangeTool
+
+tool = ExchangeTool()
+# 查人民幣對台幣近一個月
+result = tool.run("CNY to TWD")
+# 查美元對台幣近一年
+result = tool.run("USD to TWD last 1 year")
+# 查人民幣對台幣 2024/1/1~2024/3/31
+result = tool.run("CNY to TWD 2024-01-01~2024-03-31")
+
+# 取得 dict 結果，可直接給 LLM 或程式處理
+print(result)
+
+# 若要印出格式化資訊
+tool.print_result(result)
+```
+
+---
+
+## 回傳格式
+- `current_rate`: 最新匯率
+- `statistics`: 平均、最高、最低、趨勢、期間
+- `historical_data`: 每日匯率列表
+- 若查詢錯誤，dict 會有 `error` 欄位
+
+---
+
+## 注意事項
+- 目前僅支援台灣銀行網站，且網址預設查詢 CNY（如需多幣別請修改程式）
 
 ## Features
 
